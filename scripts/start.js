@@ -215,11 +215,11 @@ function addMiddleware(devServer) {
   // It may be /index.html, so let the dev server try serving it again.
    devServer.use(devServer.middleware);
 
-   let alfrescoProxy = httpProxyMiddleware('/proxy/alfresco', {
+   let alfrescoProxy = httpProxyMiddleware('/share/proxy/alfresco-api', {
       target: 'http://localhost:8080/alfresco',
       changeOrigin: true,
       pathRewrite: {
-         '^/proxy/alfresco': ''
+         '^/share/proxy/alfresco-api': 'api'
       }
    });
    devServer.use(alfrescoProxy);
